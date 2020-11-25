@@ -1,13 +1,13 @@
 {
-    "name": "nextvikas/yii2-google-authenticator",
+    "name": "DesRodman/yii2-google-authenticator",
     "description": "2 step verification of google authenticator for your yii2 application",
     "type": "yii2-extension",
     "keywords": ["yii2", "extension", "google", "authenticator", "2 step verification"],
     "license": "BSD-3-Clause",
     "authors": [
         {
-            "name": "Vikas Pandey",
-            "email": "svikas.pandey@gmail.com"
+            "name": "Dennis",
+            "email": "dennis@prof-email.com"
         }
     ],
     "require": {
