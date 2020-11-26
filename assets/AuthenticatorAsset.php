@@ -9,13 +9,16 @@ class AuthenticatorAsset extends AssetBundle {
 
     // List of CSS files that this bundle contains
     public $css = [
-    	'css/bootstrap.css'
-        , 'css/authenticator.css'
+//    	'css/bootstrap.css'
+//        , 'css/authenticator.css'
+        'css/adminlte.min.css'
     ];
     public $js = [
     ];
     public $depends = [
-        'yii\web\YiiAsset',
+        'yii\web\YiiAsset'
+        , 'yii\bootstrap4\BootstrapAsset'
+        , 'yii\bootstrap4\BootstrapPluginAsset'
     ];
 
 }

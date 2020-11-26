@@ -47,7 +47,7 @@ class DefaultController extends Controller
                 $user = SmsUsers::findOne(Yii::$app->user->identity->id);
         		$user->authenticator = Yii::$app->session->get('auth_secret');
 				$user->save(false);
-				Yii::$app->session->set('varify_next_authenticator',true);
+				Yii::$app->session->set('varify_next_authenticator', true);
 
 				return $this->redirect(['/']);
 			}

@@ -1,5 +1,5 @@
 <?php
-use yii\helpers\Html;
+    use yii\helpers\Html;
 ?>
 <div class="container">
     <div class="row">
@@ -9,16 +9,13 @@ use yii\helpers\Html;
             <hr>
             <?= Html::beginForm(['/authenticator/default/check'], 'POST'); ?>
             <div class="_aform">
-                <?php
-                if (Yii::$app->session->getFlash('error')): ?>
+                <?php if (Yii::$app->session->getFlash('error')): ?>
                     <div class="alert alert-danger" role="alert">
-                        <strong>Oh snap!</strong> <?=Yii::$app->session->getFlash('error') ?>
+                        <strong>Oh snap!</strong> <?= Yii::$app->session->getFlash('error') ?>
                     </div>
                 <?php endif; ?>
-
                 <input type="text" class="form-control" name="code" placeholder="******"><br> <br>
                 <button type="submit" class="btn btn-md btn-primary">Verify</button>
-
             </div>
             <?= Html::endForm(); ?>
         </div>
