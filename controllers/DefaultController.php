@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\filters\AccessControl;
 use desrodman\authenticator\components\Authenticator;
 use common\models\User;
+use common\models\SmsUsers;
 /**
  * Default controller for the `authenticator` module
  */
@@ -43,9 +44,8 @@ class DefaultController extends Controller
 			    Yii::$app->session->setFlash('error', "Invalid Google Authenticator Code");
 			    return $this->redirect(['/authenticator/default/scan']);
 			} else {
-
-				$user = User::findOne(Yii::$app->user->identity->id);
-				$user->authenticator = Yii::$app->session->get('auth_secret');
+                $user = SmsUsers::findOne(Yii::$app->user->identity->id);
+        		$user->authenticator = Yii::$app->session->get('auth_secret');
 				$user->save(false);
 				Yii::$app->session->set('varify_next_authenticator',true);
 
@@ -67,14 +67,13 @@ class DefaultController extends Controller
     public function actionCheck()
     {
 		$Authenticator = new Authenticator();
-		if(Yii::$app->request->isPost) {
-			$checkResult = $Authenticator->verifyCode(Yii::$app->user->identity->authenticator, Yii::$app->request->post('code'), 2);
-
-			if (!$checkResult) {
-			    Yii::$app->session->setFlash('error', "Invalid Google Authenticator Code");
+        if(Yii::$app->request->isPost) {
+        	$checkResult = $Authenticator->verifyCode(Yii::$app->user->identity->authenticator, Yii::$app->request->post('code'), 2);
+        	if (!$checkResult) {
+        	    Yii::$app->session->setFlash('error', "Invalid Google Authenticator Code");
 			    return $this->redirect(['/authenticator']);
 			} else {
-				Yii::$app->session->set('varify_next_authenticator',true);
+        		Yii::$app->session->set('varify_next_authenticator', true);
 				return $this->redirect(['/']);
 			}
 		}
