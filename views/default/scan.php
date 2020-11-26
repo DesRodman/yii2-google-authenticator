@@ -5,7 +5,7 @@ use yii\helpers\Html;
     <div class="row">
         <div class="col-md-6 col-md-offset-3 _amd">
             <h1>2 step Authentication</h1>
-            <p class="_ap">Identify yourself by scannning the QR code with Google Authenticator app</p>
+            <p class="_ap">Identify yourself by scanning the QR code with Google Authenticator app</p>
             <hr>
             <?= Html::beginForm(['/authenticator/default/scan'], 'POST'); ?>
             <div class="_aform">
