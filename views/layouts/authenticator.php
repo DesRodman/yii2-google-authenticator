@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Url;
-use nextvikas\authenticator\assets\AuthenticatorAsset;
+use desrodman\authenticator\assets\AuthenticatorAsset;
 $assets = AuthenticatorAsset::register($this);
 ?>
 <?php $this->beginPage() ?>

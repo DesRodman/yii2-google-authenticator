@@ -1,5 +1,5 @@
 <?php
-use nextvikas\authenticator\migrations\Migration;
+use desrodman\authenticator\migrations\Migration;
 
 
 /**

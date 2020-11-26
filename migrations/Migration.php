@@ -1,5 +1,5 @@
 <?php
-namespace nextvikas\authenticator\migrations;
+namespace desrodman\authenticator\migrations;
 
 class Migration extends \yii\db\Migration
 {

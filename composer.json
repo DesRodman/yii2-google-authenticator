@@ -1,5 +1,5 @@
 {
-    "name": "nextvikas/yii2-google-authenticator",
+    "name": "desrodman/yii2-google-authenticator",
     "description": "2 step verification of google authenticator for your yii2 application",
     "type": "yii2-extension",
     "keywords": ["yii2", "extension", "google", "authenticator", "2 step verification"],
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "nextvikas\\authenticator\\": ""
+            "desrodman\\authenticator\\": ""
         }
     }
 }

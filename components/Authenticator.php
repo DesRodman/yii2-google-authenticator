@@ -1,6 +1,6 @@
 <?php
 
-namespace nextvikas\authenticator\components;
+namespace desrodman\authenticator\components;
 
 use Yii;
 use yii\base\Component;
@@ -11,13 +11,13 @@ class Authenticator extends Component
     public function generateRandomSecret($secretLength = 16)
     {
         $secret = '';
-        $validChars = array(
+        $validChars = [
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 
             'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 
             'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 
             'Y', 'Z', '2', '3', '4', '5', '6', '7', 
             '=',
-        );
+        ];
 
         // Valid secret lengths are 80 to 640 bits
         if ($secretLength < 16 || $secretLength > 128) {
@@ -45,7 +45,6 @@ class Authenticator extends Component
         return $secret;
     }
 
-
     public function getCode($secret, $timeSlice = null)
     {
         if ($timeSlice === null) {
@@ -67,7 +66,6 @@ class Authenticator extends Component
 
         return str_pad($value % $modulo, $this->length, '0', STR_PAD_LEFT);
     }
-
 
     public function getQR($name, $secret, $title = null, $params = array())
     {
@@ -103,7 +101,6 @@ class Authenticator extends Component
         return false;
     }
 
-
     public function setCodeLength($length)
     {
         $this->length  = $length;
@@ -111,24 +108,22 @@ class Authenticator extends Component
         return $this;
     }
 
-
     protected function debase32($secret)
     {
         if (empty($secret)) {
             return '';
         }
 
-        $base32chars =  array(
+        $base32chars = [
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 
             'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 
             'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 
             'Y', 'Z', '2', '3', '4', '5', '6', '7', 
             '=',
-        );
+        ];
         $base32charsFlipped = array_flip($base32chars);
-
         $paddingCharCount = substr_count($secret, $base32chars[32]);
-        $allowedValues = array(6, 4, 3, 1, 0);
+        $allowedValues = [6, 4, 3, 1, 0];
         if (!in_array($paddingCharCount, $allowedValues)) {
             return false;
         }
@@ -158,7 +153,6 @@ class Authenticator extends Component
         return $binaryString;
     }
 
-
     private function timingSafeEquals($safeString, $userString)
     {
         if (function_exists('hash_equals')) {
@@ -170,12 +164,11 @@ class Authenticator extends Component
         if ($userLen != $safeLen) {
             return false;
         }
-
         $result = 0;
-
         for ($i = 0; $i < $userLen; ++$i) {
             $result |= (ord($safeString[$i]) ^ ord($userString[$i]));
         }
+
         return $result === 0;
     }
 }
